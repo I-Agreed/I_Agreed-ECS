@@ -1,0 +1,3 @@
+[submodule "src/I_Agreed-Geometry"]
+	path = src/I_Agreed-Geometry
+	url = https://github.com/I-Agreed/I_Agreed-Geometry.git
