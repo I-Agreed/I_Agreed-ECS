@@ -12,7 +12,7 @@ namespace IA::ECS {
         bool check(Entity* entity) {
             bool cares = true;
             for (Components c:components) {
-                if (std::find(entity->components.begin(), entity->components.end(), c) == entity->components.end()) {
+                if (std::find(entity->componentTypes.begin(), entity->componentTypes.end(), c) == entity->componentTypes.end()) {
                     cares = false;
                     break;
                 }
