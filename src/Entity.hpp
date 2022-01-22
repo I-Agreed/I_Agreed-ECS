@@ -2,17 +2,18 @@
 #include "IAecs.hpp"
 #include <vector>
 #include <map>
+#include <string>
 
 namespace IA::ECS {
     struct Entity {
-        std::vector<Components> componentTypes; // Stores a list of the component types that this entity should have
-        std::map<Components, Component*> components; // Maps a component type to an actual component object
+        std::vector<std::string> componentTypes; // Stores a list of the component types that this entity should have
+        std::map<std::string, C::Component*> components; // Maps a component type to an actual component object
 
-        Component* get_component(Components type) {
+        C::Component* get_component(std::string type) {
             return components[type];
         }
 
-        void add_component(Component* component) {
+        void add_component(C::Component* component) {
             components[component->type] = component;
         }
     };

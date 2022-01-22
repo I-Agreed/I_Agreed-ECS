@@ -1,11 +1,20 @@
 #pragma once;
 #include "IAecs.hpp"
+#include <string>
 
-// Every Component should also be included in the enum, and store the enum number in itself
-namespace IA::ECS {
-    enum Components {};
+
+namespace IA::ECS::C {
     
     struct Component {
-        Components type;
+        std::string type;
+
+        // Blank Constructor
+        Component() {
+
+        }
+
+        virtual void get_data() {
+
+        }
     };
 }

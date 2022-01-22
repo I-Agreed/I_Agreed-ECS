@@ -3,15 +3,21 @@
 #include <vector>
 #include <algorithm>
 
-namespace IA::ECS {
+namespace IA::ECS::S {
     struct System {
-        std::vector<Components> components; // list of component types that an entity should have for this system to operate on it
+        std::vector<std::string> components; // list of component types that an entity should have for this system to operate on it
         std::vector<Entity*> entities; // List of eneities that this system is operating on
+        World* world; // Stores the world that holds this system
+
+        // Blank Constructor
+        System() {
+
+        }
         
         // Checks if this system should care about this entity
         bool check(Entity* entity) {
             bool cares = true;
-            for (Components c:components) {
+            for (std::string c:components) {
                 if (std::find(entity->componentTypes.begin(), entity->componentTypes.end(), c) == entity->componentTypes.end()) {
                     cares = false;
                     break;
