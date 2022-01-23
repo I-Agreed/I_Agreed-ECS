@@ -20,3 +20,4 @@ namespace IA::ECS::C {
 #pragma once
 
 #include "Display.hpp"
+#include "Transform.hpp"

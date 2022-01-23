@@ -1,5 +1,7 @@
 #pragma once
 
+#include "constants.hpp"
+
 #include "I_Agreed-Geometry/IAgeo.hpp"
 
 #include "Component.hpp"
