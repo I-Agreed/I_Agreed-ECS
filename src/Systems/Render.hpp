@@ -12,7 +12,7 @@ namespace IA::ECS::S {
         // Updates an entity with whatever this system does. Returns true if the current update cycle should stop.
         virtual bool update(E::Entity* entity) {
             C::Display* display = dynamic_cast<C::Display*>(entity->get_component("Display"));
-            world->app->window->draw(world->app->sprites[display->spriteName].get());
+            world->app->window->draw(world->app->get_sprite(display->spriteName).get());
             return false;
         }
     };

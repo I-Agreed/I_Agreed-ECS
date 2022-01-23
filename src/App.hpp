@@ -56,6 +56,11 @@ namespace IA::ECS {
             }
         }
 
+        void load_sprites() {
+            // Missing image texture, defaults to this if the image cannot be found, either as a file or in the sprites map
+            load_sprite(MISSING_SPRITE, "Missing", 0);
+        }
+
         // Load sprite from files. Filename is without extension (expects .png). Will also check a subdirectory with the same name if it exists
         // if length > 1, then it will look for multiple files that start with the filename in the following format:
         // Filename_x.png - xth image in the sequence
@@ -66,11 +71,22 @@ namespace IA::ECS {
         void load_sprite(std::string filename, std::string name, int length = 1) {
             if (length == 1) {
                 sf::Texture texture;
-                texture.loadFromFile(SPRITES_DIR + filename + ".png");
+                // If the file is not found, load missing texture instead
+                if (!texture.loadFromFile(SPRITES_DIR + filename + ".png")) texture.loadFromFile(SPRITES_DIR + MISSING_SPRITE + ".png");
                 sf::Sprite* sfmlSprite = new sf::Sprite(texture);
                 Sprite sprite(sfmlSprite);
                 sprites[name] = sprite;
                 textures[name] = texture;
+            }
+        }
+
+        // Get sprite object (use this instead of directly accessing the map)
+        // Defaults to the Missing texture
+        Sprite get_sprite(std::string name) {
+            if (sprites.count(name) > 0) { // exists
+                return sprites[name];
+            } else { // doesn't do that (exist)
+                return sprites["Missing"];
             }
         }
     };
